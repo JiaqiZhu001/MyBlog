@@ -1,0 +1,53 @@
+---
+title: Data science with Fastfood
+author: Package Build
+date: '2023-04-06'
+slug: []
+categories:
+  - R
+tags:
+  - R Markdown
+authors: []
+description: ''
+externalLink: ''
+series: []
+---
+
+# Data science in Fast food
+
+In this post we have dataset of fastfood item.
+
+```{r}
+library(tidyverse)
+library("tidymodels")
+data<-read.csv("fastfood.csv")
+data
+```
+
+Lets first check the resuturant and check the distrubution
+
+```{r}
+resturant <- table(data$restaurant)
+pie(resturant)
+```
+
+
+lets check the distrubution of the total cals of each food item.
+
+```{r}
+hist(data$calories)
+```
+
+As we can see most of food item has calories around 500.
+
+```{r}
+cholesterol_fit <- linear_reg() %>%
+  set_engine("lm") %>%
+  fit(cholesterol ~ cal_fat + total_fat + trans_fat, data = data)
+tidy(cholesterol_fit)
+```
+
+
+
+
+

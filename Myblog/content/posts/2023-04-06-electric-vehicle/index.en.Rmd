@@ -1,0 +1,42 @@
+---
+title: Electric Vehicle
+author: Package Build
+date: '2023-04-06'
+slug: []
+categories:
+  - R
+tags:
+  - R Markdown
+authors: []
+description: ''
+externalLink: ''
+series: []
+---
+
+# Analyze the Electric Vehicle in Each State
+
+```{r}
+library(readr)
+Electric_Vehicle_Population_Data <- read_csv("Electric_Vehicle_Population_Data.csv")
+Electric_Vehicle_Population_Data
+```
+
+Let's check the distribution on maker
+
+```{r}
+county_data = table(Electric_Vehicle_Population_Data$Make)
+
+pie(county_data)
+```
+
+The pie chart shows staht Telsa and Nissan contributed more than 50% of the Electric vehicle 
+
+Let see how many electic range of each vechile and it frequency.
+```{r}
+Range = table(Electric_Vehicle_Population_Data$`Electric Range`)
+hist(Electric_Vehicle_Population_Data$`Electric Range`)
+```
+
+However, most of the item appears in 0 - 50. After observation, we found that it is because most of the vehicle are hybrid power supply. Which means the battery can only provide limited power. Thus the pure electric range is very low.
+
+
